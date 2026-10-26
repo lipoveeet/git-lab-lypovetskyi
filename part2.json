@@ -1,0 +1,170 @@
+[
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner",
+  "cmd": "git config --global user.name \"Bohdan Lypovetskyi\"\ngit config --global user.email \"lipoveeet@users.noreply.github.com\"\ngit clone -q https://github.com/lipoveeet/git-lab-lypovetskyi.git && cd git-lab-lypovetskyi && git log --oneline --graph -12",
+  "out": "* b77ce3a Add simple web page and notes\n* 40a152b Add Git lab tasks workflow for CLI operations\n* 8d99cb4 Create part2.sh for Git lab exercises\n* 5552a55 Set up Git and add initial web pages and features\n* 5349b01 Add session.py to run lab commands and save outputs\n* a4166ee Initial commit"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/git-lab-lypovetskyi",
+  "cmd": "ls",
+  "out": "README.md\napp.js\nindex.html\nnotes.txt\nstyle.css"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/git-lab-lypovetskyi",
+  "cmd": "cat notes.txt",
+  "out": "Project: git-lab-lypovetskyi\nStatus: initial version\nAuthor: Bohdan Lypovetskyi"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/git-lab-lypovetskyi",
+  "cmd": "git checkout -b conflict_test\nsed -i '2s/.*/Status: changed in conflict_test branch/' notes.txt\ngit commit -am \"conflict_test: change status line\"\ngit push -q -u origin conflict_test",
+  "out": "Switched to a new branch 'conflict_test'\n[conflict_test fa4f37b] conflict_test: change status line\n 1 file changed, 1 insertion(+), 1 deletion(-)\nremote: \nremote: Create a pull request for 'conflict_test' on GitHub by visiting:        \nremote:      https://github.com/lipoveeet/git-lab-lypovetskyi/pull/new/conflict_test        \nremote: "
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/git-lab-lypovetskyi",
+  "cmd": "git checkout main\nsed -i '2s/.*/Status: changed in main branch/' notes.txt\ngit commit -am \"main: change status line\"\ngit push -q origin main",
+  "out": "Switched to branch 'main'\nYour branch is up to date with 'origin/main'.\n[main 7559299] main: change status line\n 1 file changed, 1 insertion(+), 1 deletion(-)"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/git-lab-lypovetskyi",
+  "cmd": "git merge conflict_test",
+  "out": "Auto-merging notes.txt\nCONFLICT (content): Merge conflict in notes.txt\nAutomatic merge failed; fix conflicts and then commit the result."
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/git-lab-lypovetskyi",
+  "cmd": "git status",
+  "out": "On branch main\nYour branch is up to date with 'origin/main'.\n\nYou have unmerged paths.\n  (fix conflicts and run \"git commit\")\n  (use \"git merge --abort\" to abort the merge)\n\nUnmerged paths:\n  (use \"git add <file>...\" to mark resolution)\n\tboth modified:   notes.txt\n\nno changes added to commit (use \"git add\" and/or \"git commit -a\")"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/git-lab-lypovetskyi",
+  "cmd": "cat notes.txt",
+  "out": "Project: git-lab-lypovetskyi\n<<<<<<< HEAD\nStatus: changed in main branch\n=======\nStatus: changed in conflict_test branch\n>>>>>>> conflict_test\nAuthor: Bohdan Lypovetskyi"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/git-lab-lypovetskyi",
+  "cmd": "printf 'Project: git-lab-lypovetskyi\\nStatus: changed in main and conflict_test (conflict resolved)\\nAuthor: Bohdan Lypovetskyi\\n' > notes.txt\ncat notes.txt",
+  "out": "Project: git-lab-lypovetskyi\nStatus: changed in main and conflict_test (conflict resolved)\nAuthor: Bohdan Lypovetskyi"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/git-lab-lypovetskyi",
+  "cmd": "git add notes.txt\ngit commit -m \"Resolve merge conflict between main and conflict_test\"",
+  "out": "[main 45fddf0] Resolve merge conflict between main and conflict_test"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/git-lab-lypovetskyi",
+  "cmd": "git log --oneline --graph -6",
+  "out": "*   45fddf0 Resolve merge conflict between main and conflict_test\n|\\  \n| * fa4f37b conflict_test: change status line\n* | 7559299 main: change status line\n|/  \n* b77ce3a Add simple web page and notes\n* 40a152b Add Git lab tasks workflow for CLI operations\n* 8d99cb4 Create part2.sh for Git lab exercises"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/git-lab-lypovetskyi",
+  "cmd": "git push origin main",
+  "out": "To https://github.com/lipoveeet/git-lab-lypovetskyi.git\n   7559299..45fddf0  main -> main"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/git-lab-lypovetskyi",
+  "cmd": "printf '# Logs\\n*.log\\n\\n# Temporary folder\\ntemp/\\n' > .gitignore\ncat .gitignore",
+  "out": "# Logs\n*.log\n\n# Temporary folder\ntemp/"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/git-lab-lypovetskyi",
+  "cmd": "mkdir -p temp\necho \"error at line 1\" > app.log\necho \"debug info\" > debug.log\necho \"cache\" > temp/cache.txt\necho \"this file must be tracked\" > readme_test.txt\nls -la . temp",
+  "out": ".:\ntotal 60\ndrwxr-xr-x  6 runner runner 4096 Oct 26 02:56 .\ndrwxr-x--- 12 runner runner 4096 Oct 26 02:56 ..\ndrwxr-xr-x  7 runner runner 4096 Oct 26 02:56 .git\ndrwxr-xr-x  3 runner runner 4096 Oct 26 02:56 .github\n-rw-r--r--  1 runner runner   39 Oct 26 02:56 .gitignore\ndrwxr-xr-x  2 runner runner 4096 Oct 26 02:56 .lab\n-rw-r--r--  1 runner runner  153 Oct 26 02:56 README.md\n-rw-r--r--  1 runner runner   84 Oct 26 02:56 app.js\n-rw-r--r--  1 runner runner   16 Oct 26 02:56 app.log\n-rw-r--r--  1 runner runner   11 Oct 26 02:56 debug.log\n-rw-r--r--  1 runner runner  304 Oct 26 02:56 index.html\n-rw-r--r--  1 runner runner  118 Oct 26 02:56 notes.txt\n-rw-r--r--  1 runner runner   26 Oct 26 02:56 readme_test.txt\n-rw-r--r--  1 runner runner   99 Oct 26 02:56 style.css\ndrwxr-xr-x  2 runner runner 4096 Oct 26 02:56 temp\n\ntemp:\ntotal 12\ndrwxr-xr-x 2 runner runner 4096 Oct 26 02:56 .\ndrwxr-xr-x 6 runner runner 4096 Oct 26 02:56 ..\n-rw-r--r-- 1 runner runner    6 Oct 26 02:56 cache.txt"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/git-lab-lypovetskyi",
+  "cmd": "git status",
+  "out": "On branch main\nYour branch is up to date with 'origin/main'.\n\nUntracked files:\n  (use \"git add <file>...\" to include in what will be committed)\n\t.gitignore\n\treadme_test.txt\n\nnothing added to commit but untracked files present (use \"git add\" to track)"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/git-lab-lypovetskyi",
+  "cmd": "git add .\ngit commit -m \"Add .gitignore (ignore *.log and temp/)\"\ngit status --ignored",
+  "out": "[main f251ae0] Add .gitignore (ignore *.log and temp/)\n 2 files changed, 6 insertions(+)\n create mode 100644 .gitignore\n create mode 100644 readme_test.txt\nOn branch main\nYour branch is ahead of 'origin/main' by 1 commit.\n  (use \"git push\" to publish your local commits)\n\nIgnored files:\n  (use \"git add -f <file>...\" to include in what will be committed)\n\tapp.log\n\tdebug.log\n\ttemp/\n\nnothing to commit, working tree clean"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/git-lab-lypovetskyi",
+  "cmd": "git push origin main",
+  "out": "To https://github.com/lipoveeet/git-lab-lypovetskyi.git\n   45fddf0..f251ae0  main -> main"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/git-lab-lypovetskyi",
+  "cmd": "echo \"console.log('WRONG CODE - this commit will be reverted');\" >> app.js\ngit commit -am \"Add wrong debug line to app.js\"\ntail -2 app.js",
+  "out": "[main 7a5da35] Add wrong debug line to app.js\n 1 file changed, 1 insertion(+)\ndocument.getElementById('greeting').textContent = 'Hello from Bohdan Lypovetskyi!';\nconsole.log('WRONG CODE - this commit will be reverted');"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/git-lab-lypovetskyi",
+  "cmd": "git log --oneline -3",
+  "out": "7a5da35 Add wrong debug line to app.js\nf251ae0 Add .gitignore (ignore *.log and temp/)\n45fddf0 Resolve merge conflict between main and conflict_test"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/git-lab-lypovetskyi",
+  "cmd": "git revert --no-edit HEAD",
+  "out": "[main ba1b6dc] Revert \"Add wrong debug line to app.js\"\n Date: Mon Oct 26 02:56:43 2026 +0000\n 1 file changed, 1 deletion(-)"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/git-lab-lypovetskyi",
+  "cmd": "git log --oneline -4",
+  "out": "ba1b6dc Revert \"Add wrong debug line to app.js\"\n7a5da35 Add wrong debug line to app.js\nf251ae0 Add .gitignore (ignore *.log and temp/)\n45fddf0 Resolve merge conflict between main and conflict_test"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/git-lab-lypovetskyi",
+  "cmd": "tail -2 app.js",
+  "out": "document.getElementById('greeting').textContent = 'Hello from Bohdan Lypovetskyi!';"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/git-lab-lypovetskyi",
+  "cmd": "git show --stat HEAD",
+  "out": "commit ba1b6dc9668d79adfeae89049bbd1aeefc85174a\nAuthor: Bohdan Lypovetskyi <lipoveeet@users.noreply.github.com>\nDate:   Mon Oct 26 02:56:43 2026 +0000\n\n    Revert \"Add wrong debug line to app.js\"\n    \n    This reverts commit 7a5da35a422f54fd85f91cc59807f76513dbfd21.\n\n app.js | 1 -\n 1 file changed, 1 deletion(-)"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/git-lab-lypovetskyi",
+  "cmd": "git push origin main",
+  "out": "To https://github.com/lipoveeet/git-lab-lypovetskyi.git\n   f251ae0..ba1b6dc  main -> main"
+ }
+]
