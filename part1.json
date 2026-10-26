@@ -1,0 +1,135 @@
+[
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner",
+  "cmd": "git --version",
+  "out": "git version 2.55.0"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner",
+  "cmd": "git config --global user.name \"Bohdan Lypovetskyi\"\ngit config --global user.email \"lipoveeet@users.noreply.github.com\"\ngit config --global init.defaultBranch main\ngit config --global --get-regexp '^user\\.'",
+  "out": "user.name Bohdan Lypovetskyi\nuser.email lipoveeet@users.noreply.github.com"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner",
+  "cmd": "git clone https://github.com/lipoveeet/git-lab-lypovetskyi.git",
+  "out": "Cloning into 'git-lab-lypovetskyi'..."
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner",
+  "cmd": "cd git-lab-lypovetskyi && ls -la && git log --oneline",
+  "out": "total 24\ndrwxr-xr-x  5 runner runner 4096 Oct 26 02:39 .\ndrwxr-x--- 12 runner runner 4096 Oct 26 02:39 ..\ndrwxr-xr-x  7 runner runner 4096 Oct 26 02:39 .git\ndrwxr-xr-x  3 runner runner 4096 Oct 26 02:39 .github\ndrwxr-xr-x  2 runner runner 4096 Oct 26 02:39 .lab\n-rw-r--r--  1 runner runner  153 Oct 26 02:39 README.md\n40a152b Add Git lab tasks workflow for CLI operations\n8d99cb4 Create part2.sh for Git lab exercises\n5552a55 Set up Git and add initial web pages and features\n5349b01 Add session.py to run lab commands and save outputs\na4166ee Initial commit"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/git-lab-lypovetskyi",
+  "cmd": "cat > index.html <<'H'\n<!DOCTYPE html>\n<html lang=\"uk\">\n<head>\n  <meta charset=\"UTF-8\">\n  <title>Git lab - Lypovetskyi</title>\n  <link rel=\"stylesheet\" href=\"style.css\">\n</head>\n<body>\n  <h1>Лабораторна робота №3: Git та GitHub</h1>\n  <p id=\"greeting\"></p>\n  <script src=\"app.js\"></script>\n</body>\n</html>\nH\nprintf 'body { font-family: Arial, sans-serif; margin: 40px; background: #f5f7fa; }\\nh1 { color: #24292f; }\\n' > style.css\nprintf \"document.getElementById('greeting').textContent = 'Hello from Bohdan Lypovetskyi!';\\n\" > app.js\nprintf 'Project: git-lab-lypovetskyi\\nStatus: initial version\\nAuthor: Bohdan Lypovetskyi\\n' > notes.txt\nls",
+  "out": "README.md\napp.js\nindex.html\nnotes.txt\nstyle.css"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/git-lab-lypovetskyi",
+  "cmd": "git status",
+  "out": "On branch main\nYour branch is up to date with 'origin/main'.\n\nUntracked files:\n  (use \"git add <file>...\" to include in what will be committed)\n\tapp.js\n\tindex.html\n\tnotes.txt\n\tstyle.css\n\nnothing added to commit but untracked files present (use \"git add\" to track)"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/git-lab-lypovetskyi",
+  "cmd": "git add .\ngit commit -m \"Add simple web page and notes\"",
+  "out": "[main b77ce3a] Add simple web page and notes\n 4 files changed, 19 insertions(+)\n create mode 100644 app.js\n create mode 100644 index.html\n create mode 100644 notes.txt\n create mode 100644 style.css"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/git-lab-lypovetskyi",
+  "cmd": "git push origin main",
+  "out": "To https://github.com/lipoveeet/git-lab-lypovetskyi.git\n   40a152b..b77ce3a  main -> main"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/git-lab-lypovetskyi",
+  "cmd": "git log --oneline",
+  "out": "b77ce3a Add simple web page and notes\n40a152b Add Git lab tasks workflow for CLI operations\n8d99cb4 Create part2.sh for Git lab exercises\n5552a55 Set up Git and add initial web pages and features\n5349b01 Add session.py to run lab commands and save outputs\na4166ee Initial commit"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/git-lab-lypovetskyi",
+  "cmd": "git checkout -b feature_7",
+  "out": "Switched to a new branch 'feature_7'"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/git-lab-lypovetskyi",
+  "cmd": "cat >> app.js <<'J'\n\nfunction sum(a, b) {\n  return a + b;\n}\nconsole.log('feature_7: 2 + 3 =', sum(2, 3));\nJ\necho \"Feature 7: sum() function in app.js\" > feature_7.txt\ngit status --short",
+  "out": " M app.js\n?? feature_7.txt"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/git-lab-lypovetskyi",
+  "cmd": "git add .\ngit commit -m \"feature_7: add sum() function\"",
+  "out": "[feature_7 506789b] feature_7: add sum() function\n 2 files changed, 6 insertions(+)\n create mode 100644 feature_7.txt"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/git-lab-lypovetskyi",
+  "cmd": "git push -u origin feature_7",
+  "out": "remote: \nremote: Create a pull request for 'feature_7' on GitHub by visiting:        \nremote:      https://github.com/lipoveeet/git-lab-lypovetskyi/pull/new/feature_7        \nremote: \nTo https://github.com/lipoveeet/git-lab-lypovetskyi.git\n * [new branch]      feature_7 -> feature_7\nbranch 'feature_7' set up to track 'origin/feature_7'."
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/git-lab-lypovetskyi",
+  "cmd": "git branch -a",
+  "out": "* feature_7\n  main\n  remotes/origin/HEAD -> origin/main\n  remotes/origin/feature_7\n  remotes/origin/main"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/git-lab-lypovetskyi",
+  "cmd": "git checkout main\ngit checkout -b development",
+  "out": "Switched to branch 'main'\nYour branch is up to date with 'origin/main'.\nSwitched to a new branch 'development'"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/git-lab-lypovetskyi",
+  "cmd": "cat > about.html <<'H'\n<!DOCTYPE html>\n<html lang=\"uk\"><head><meta charset=\"UTF-8\"><title>Про проєкт</title></head>\n<body><h1>Про проєкт</h1><p>Навчальний репозиторій для вивчення Git.</p></body></html>\nH\ngit add about.html\ngit commit -m \"development: add about page\"",
+  "out": "[development 7a9cc0b] development: add about page\n 1 file changed, 3 insertions(+)\n create mode 100644 about.html"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/git-lab-lypovetskyi",
+  "cmd": "cat > contacts.html <<'H'\n<!DOCTYPE html>\n<html lang=\"uk\"><head><meta charset=\"UTF-8\"><title>Контакти</title></head>\n<body><h1>Контакти</h1><p>Липовецький Богдан, ПІ-23-03</p></body></html>\nH\ngit add contacts.html\ngit commit -m \"development: add contacts page\"",
+  "out": "[development 77a8d8f] development: add contacts page\n 1 file changed, 3 insertions(+)\n create mode 100644 contacts.html"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/git-lab-lypovetskyi",
+  "cmd": "git log --oneline --graph --all",
+  "out": "* 77a8d8f development: add contacts page\n* 7a9cc0b development: add about page\n| * 506789b feature_7: add sum() function\n|/  \n* b77ce3a Add simple web page and notes\n* 40a152b Add Git lab tasks workflow for CLI operations\n* 8d99cb4 Create part2.sh for Git lab exercises\n* 5552a55 Set up Git and add initial web pages and features\n* 5349b01 Add session.py to run lab commands and save outputs\n* a4166ee Initial commit"
+ },
+ {
+  "user": "runner",
+  "host": "runnervmtai0g",
+  "cwd": "/home/runner/git-lab-lypovetskyi",
+  "cmd": "git push -u origin development",
+  "out": "remote: \nremote: Create a pull request for 'development' on GitHub by visiting:        \nremote:      https://github.com/lipoveeet/git-lab-lypovetskyi/pull/new/development        \nremote: \nTo https://github.com/lipoveeet/git-lab-lypovetskyi.git\n * [new branch]      development -> development\nbranch 'development' set up to track 'origin/development'."
+ }
+]
