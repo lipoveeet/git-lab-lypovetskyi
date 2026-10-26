@@ -1,3 +1,4 @@
 Project: git-lab-lypovetskyi
 Status: changed in main and conflict_test (conflict resolved)
 Author: Bohdan Lypovetskyi
+CI: GitHub Actions workflow "Hello workflow" runs on every push to main
