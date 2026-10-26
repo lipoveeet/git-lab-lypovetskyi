@@ -1,0 +1,30 @@
+name: Git lab tasks (CLI)
+on:
+  workflow_dispatch:
+    inputs:
+      part:
+        description: 'Part of the lab (1 or 2)'
+        required: true
+        default: '1'
+permissions:
+  contents: write
+jobs:
+  git-cli:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: lab
+      - name: Git credentials (GITHUB_TOKEN)
+        run: git config --global credential.helper '!f() { echo username=x-access-token; echo "password=$GH_TOKEN"; }; f'
+      - name: Run git commands
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: cd ~ && python3 $GITHUB_WORKSPACE/lab/.lab/session.py $GITHUB_WORKSPACE/lab/.lab/part${{ inputs.part }}.sh /tmp/part${{ inputs.part }}.json
+      - name: Save terminal output to branch lab-outputs
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cd /tmp && git clone -q https://github.com/${{ github.repository }}.git o && cd o
+          git checkout lab-outputs 2>/dev/null || { git checkout --orphan lab-outputs; git rm -rfq .; }
+          cp /tmp/part${{ inputs.part }}.json . && git add part*.json && git commit -qm "terminal output part ${{ inputs.part }}" && git push -q origin lab-outputs
