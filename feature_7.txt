@@ -1,0 +1,1 @@
+Feature 7: sum() function in app.js
