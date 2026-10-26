@@ -1,0 +1,3 @@
+Project: git-lab-lypovetskyi
+Status: initial version
+Author: Bohdan Lypovetskyi
